@@ -1,0 +1,56 @@
+<div id="registration" class="d-flex align-items-center justify-content-center">
+  <div class="row form">
+    <div class="col-md-8 offset-md-2">
+<!--      <h3>Реєстрація</h3>-->
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>Логін</label>
+          <input type="text" formControlName="username" class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && f.username.errors }"/>
+          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Username is required</div>
+            <!--              <div *ngIf="f.email.errors.email">Email must be a valid email address</div>-->
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Адреса ел. пошти</label>
+          <input type="email" formControlName="email" class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">Email is required</div>
+            <!--              <div *ngIf="f.email.errors.email">Email must be a valid email address</div>-->
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Пароль</label>
+          <input type="password" formControlName="password" class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+            <!--              <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>-->
+          </div>
+        </div>
+        <div class="form-group">
+          <label style="text-align: center">Підтвердження паролю</label>
+          <input type="password" formControlName="passwordConfirmation" class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && f.passwordConfirmation.errors }"/>
+          <div *ngIf="submitted && f.passwordConfirmation.errors" class="invalid-feedback">
+            <div *ngIf="f.passwordConfirmation.errors.required">Password is required</div>
+            <!--              <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>-->
+          </div>
+        </div>
+        <div class="form-group">
+          <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Зареєструватися
+          </button>
+          <a routerLink="/" class="btn btn-link">Скасувати</a>
+        </div>
+      </form>
+    </div>
+
+
+    <!--      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+  </div>
+</div>
+

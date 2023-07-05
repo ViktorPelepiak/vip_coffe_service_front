@@ -1,0 +1,25 @@
+#logo{
+  font-family: 'Gugi', cursive;
+
+  width: 6rem;
+  height: 6rem;
+
+  border-radius: 3rem;
+
+  margin-bottom: -2rem;
+}
+
+nav {
+  opacity: 20
+}
+
+header {
+  height: 6rem;
+
+  margin-bottom: -6rem;
+}
+
+.bg-dark {
+  background-color: hsla(210, 10.3%, 22.7%, 0.9) !important;
+}
+

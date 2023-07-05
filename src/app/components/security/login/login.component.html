@@ -1,0 +1,38 @@
+<div id="login" class="d-flex align-items-center justify-content-center">
+    <div class="row form">
+      <div class="col-md-8 offset-md-2">
+<!--        <h3>Вхід</h3>-->
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label>Логін</label>
+            <input type="text" formControlName="login" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && f.login.errors }"/>
+            <div *ngIf="submitted && f.login.errors" class="invalid-feedback">
+              <div *ngIf="f.login.errors.required">Login is required</div>
+              <!--              <div *ngIf="f.email.errors.email">Email must be a valid email address</div>-->
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Пароль</label>
+            <input type="password" formControlName="password" class="form-control"
+                   [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">Password is required</div>
+              <!--              <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>-->
+            </div>
+          </div>
+          <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+              Увійти
+            </button>
+            <a routerLink="/" class="btn btn-link">Скасувати</a>
+          </div>
+        </form>
+      </div>
+
+
+      <!--      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    </div>
+  </div>
+

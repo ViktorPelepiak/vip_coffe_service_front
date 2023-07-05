@@ -1,0 +1,26 @@
+#footer {
+  margin-top: -4.5rem !important;
+}
+
+#registration {
+  height: calc(100vh - 4.5rem);
+  width: 100vw;
+
+  background-image: url("/assets/images/background_without_logo.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  padding-top: 11rem;
+}
+
+.form {
+  width: 50%;
+}
+
+label {
+  margin-bottom: 0;
+}
+
+.form-group {
+  margin-bottom: 0.5rem;
+}

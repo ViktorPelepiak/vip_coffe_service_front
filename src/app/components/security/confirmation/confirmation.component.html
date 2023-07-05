@@ -1,0 +1,39 @@
+<div id="tokenConfirmation" class="d-flex align-items-center justify-content-center">
+
+  <div *ngIf="isWithoutToken">
+    Дякуємо за реєстрацію!
+    <br>
+    На Вашу пошту було відправлено листа для підтвердження реєстрації.
+  </div>
+
+  <div *ngIf="pageVisible">
+
+    <div *ngIf="isVerificationSucceeded">
+      Дякуємо, що підтвердили свою пошту!
+      <br>
+      Для продовження роботи, будь ласка, <a class="nav-link" [routerLink]="['/login']">авторизуйтесь</a>
+    </div>
+    <div *ngIf="!isVerificationSucceeded" [ngSwitch]="reason">
+      <div *ngSwitchCase="'TOKEN_EXPIRED'">
+        Вибачте, але час відведений на підтвердження вашої пошти минув!
+        <br>
+        Щоб повторно відтравити запит на підтвердження натисніть на кнопку
+        <form [formGroup]="tokenResend" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+              Відправити запит
+            </button>
+          </div>
+        </form>
+      </div>
+      <div *ngSwitchCase="'TOKEN_NOT_FOUND'">
+        Вибачте, але посилання не валідне!
+      </div>
+      <div *ngSwitchDefault>
+        Упс! Щось пішло не так.
+      </div>
+    </div>
+  </div>
+
+</div>

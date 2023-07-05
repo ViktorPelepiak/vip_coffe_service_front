@@ -1,0 +1,22 @@
+#footer {
+  margin-top: -4.5rem !important;
+}
+
+#login {
+  height: calc(100vh - 4.5rem);
+  width: 100vw;
+
+  background-image: url("/assets/images/background_without_logo.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  padding-top: 6rem;
+}
+
+.form {
+  width: 50%;
+}
+
+label {
+  margin-bottom: 0;
+}
