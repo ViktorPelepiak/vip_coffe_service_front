@@ -47,8 +47,8 @@ export class LoginComponent implements OnInit {
       .subscribe(
         data => {
           console.log(this.returnUrl)
-          // this.toast.success("You successful Log in.");
-          this.router.navigate([this.returnUrl]);
+          // @ts-ignore
+          window.location = this.returnUrl
         },
         error => {
           this.loading = false;

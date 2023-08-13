@@ -14,7 +14,7 @@ export class RegistrationComponent {
   registrationForm : any;
   loading = false;
   submitted = false;
-  returnUrl = 'surveys';
+  returnUrl = '';
   error = '';
 
   constructor(

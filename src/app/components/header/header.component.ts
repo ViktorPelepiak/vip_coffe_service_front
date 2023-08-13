@@ -16,8 +16,8 @@ export class HeaderComponent {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private authService: AuthenticationService) {
-    this.isUserLoggedIn = this.authService.isUserLoggedIn();
-    this.isLoggedUserIsAdmin = this.authService.isAdmin()
+    this.isUserLoggedIn = authService.isUserLoggedIn();
+    this.isLoggedUserIsAdmin = authService.isAdmin();
   }
 
   handleLogout() {

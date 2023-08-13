@@ -1,0 +1,81 @@
+<div id="administration" class="d-flex align-items-center justify-content-center">
+  <table id="brandTable" class="table table-stripped table-hover">
+  </table>
+
+
+</div>
+<button class="btn add-brand-btn" data-toggle="modal" data-target="#addBrandModal"><p>+</p></button>
+
+<div class="modal fade" id="addBrandModal" tabindex="-1" role="dialog" aria-labelledby="addBrandModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog my-modal" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title translatable" id="addBrandModalLabel">Додати бренд</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span class="modal-title" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body my-modal-body">
+        <div class="modal-container">
+          <label for="newBrandName">Новий бренд</label>
+          <input id="newBrandName" type="text" class="form-control">
+          <label for="newBrandName" class="newBrandError" style="display: none"></label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Скасувати</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="sendSaveRequest()">Зберегти</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editBrandModal" tabindex="-1" role="dialog" aria-labelledby="editBrandModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog my-modal" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title translatable" id="editBrandModalLabel">Зміна назви бренду</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span class="modal-title" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body my-modal-body">
+        <div class="modal-container">
+          <input id="brandId" type="text" hidden>
+          <input id="brandName" type="text" class="form-control">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Скасувати</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="sendEditRequest()">Зберегти</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="deleteBrandModal" tabindex="-1" role="dialog" aria-labelledby="deleteBrandModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog my-modal" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title translatable" id="deleteBrandModalLabel">Видалити бренд</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span class="modal-title" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body my-modal-body">
+        <div class="modal-container">
+          <input id="deleteBrandId" type="text" hidden>
+          <h3 id="removeQuestion"></h3>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Скасувати</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="sendDeleteRequest()">Видалити
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
