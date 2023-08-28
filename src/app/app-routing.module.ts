@@ -6,6 +6,7 @@ import {RegistrationComponent} from "./components/security/registration/registra
 import {ConfirmationComponent} from "./components/security/confirmation/confirmation.component";
 import {AdministrationComponent} from "./components/administration/administration.component";
 import {AdministrationBrandsComponent} from "./components/administration-brands/administration-brands.component";
+import {AdministrationModelsComponent} from "./components/administration-models/administration-models.component";
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: "registration", component: RegistrationComponent},
   {path: "user/verification", component:ConfirmationComponent},
   {path: "administration", component:AdministrationComponent},
-  {path: "administration/brands", component:AdministrationBrandsComponent}
+  {path: "administration/brands", component:AdministrationBrandsComponent},
+  {path: "administration/models", component:AdministrationModelsComponent}
 ];
 
 @NgModule({

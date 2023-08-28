@@ -5,12 +5,12 @@ import {HTTP_OPTIONS, SERVER_URL} from "../config/http-config";
 import {Observable} from "rxjs";
 
 @Injectable({providedIn: 'root'})
-export class MachineModelService {
+export class MachineBrandService {
 
   constructor(private http: HttpClient) {
   }
 
-  getAllBrands() : Observable<CustomResponse> {
+    getAllBrands() : Observable<CustomResponse> {
     return this.http.get<CustomResponse>(SERVER_URL + `/machine/brand/`, HTTP_OPTIONS);
   }
 
@@ -34,7 +34,7 @@ export class MachineModelService {
       HTTP_OPTIONS
     );
   }
-  deleteBrand(brandId: bigint) : Observable<CustomResponse> {
+  deleteBrand(brandId : bigint) : Observable<CustomResponse> {
     return this.http.delete<CustomResponse>(
       SERVER_URL + `/machine/brand/` + brandId,
       HTTP_OPTIONS

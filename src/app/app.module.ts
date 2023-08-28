@@ -13,6 +13,7 @@ import {RegistrationComponent} from './components/security/registration/registra
 import {ConfirmationComponent} from './components/security/confirmation/confirmation.component';
 import {AdministrationComponent} from './components/administration/administration.component';
 import {AdministrationBrandsComponent} from './components/administration-brands/administration-brands.component';
+import { AdministrationModelsComponent } from './components/administration-models/administration-models.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {AdministrationBrandsComponent} from './components/administration-brands/
     RegistrationComponent,
     ConfirmationComponent,
     AdministrationComponent,
-    AdministrationBrandsComponent
+    AdministrationBrandsComponent,
+    AdministrationModelsComponent
   ],
   imports: [
     BrowserModule,

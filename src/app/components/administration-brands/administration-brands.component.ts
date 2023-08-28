@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {MachineModelService} from "../../services/machineModel.service";
+import {MachineBrandService} from "../../services/machine-brand.service";
 import {Brand} from "../../models/brand";
 
 @Component({
@@ -10,7 +10,7 @@ import {Brand} from "../../models/brand";
 export class AdministrationBrandsComponent {
   public brands : Brand[] = [];
   constructor(
-    private machineModelService : MachineModelService
+    private machineModelService : MachineBrandService
   ) {
     machineModelService.getAllBrands().subscribe( response => {
       this.brands = response.result;
