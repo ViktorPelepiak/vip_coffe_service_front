@@ -1,0 +1,97 @@
+<div id="administration" class="d-flex align-items-center justify-content-center">
+  <table id="modelTable" class="table table-stripped table-hover">
+  </table>
+
+
+</div>
+<button class="btn add-model-btn" data-toggle="modal" data-target="#addModelModal"><p>+</p></button>
+
+<div class="modal fade" id="addModelModal" tabindex="-1" role="dialog" aria-labelledby="addModelModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog my-modal" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title translatable" id="addModelModalLabel">Додати модель</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span class="modal-title" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body my-modal-body">
+        <div class="modal-container">
+          <label for="newBrandName">Нова модель</label>
+          <select id="newBrandName" class="form-control">
+            <option *ngFor="let brand of brands">
+              {{ brand.brand }}
+            </option>
+          </select>
+          <label for="newModelName" class="newModelError" style="display: none"></label>
+
+          <label for="newModelName">Нова модель</label>
+          <input id="newModelName" type="text" class="form-control">
+          <label for="newModelName" class="newModelError" style="display: none"></label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Скасувати</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="sendSaveRequest()">Зберегти</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editModelModal" tabindex="-1" role="dialog" aria-labelledby="editModelModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog my-modal" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title translatable" id="editModelModalLabel">Редагування моделі</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span class="modal-title" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body my-modal-body">
+        <div class="modal-container">
+          <input id="editModelId" type="text" hidden>
+          <label for="editBrandName">Бренд</label>
+          <select id="editBrandName" class="form-control">
+            <option *ngFor="let brand of brands">
+              {{ brand.brand }}
+            </option>
+          </select>
+          <label for="editModelName">Модель</label>
+          <input id="editModelName" type="text" class="form-control">
+          <label for="editModelName" class="newModelError" style="display: none">Модель</label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Скасувати</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="sendEditRequest()">Зберегти</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="deleteModelModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog my-modal" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title translatable" id="deleteModelModalLabel">Видалити модель</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span class="modal-title" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body my-modal-body">
+        <div class="modal-container">
+          <input id="deleteModelId" type="text" hidden>
+          <h3 id="removeQuestion"></h3>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Скасувати</button>
+       <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="sendDeleteRequest()">Видалити
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
