@@ -1,0 +1,53 @@
+#footer {
+  margin-top: -4.5rem !important;
+}
+
+#administration {
+  height: calc(100vh - 4.5rem);
+  width: 100vw;
+
+  background-image: url("/assets/images/background_without_logo.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  padding-top: 11rem;
+}
+
+.form {
+  width: 50%;
+}
+
+label {
+  margin-bottom: 0;
+}
+
+.form-group {
+  margin-bottom: 0.5rem;
+}
+
+
+table {
+  width: 50%;
+}
+
+
+.add-characteristic-type-btn {
+  width: 4rem;
+  height: 4rem;
+
+  position: absolute;
+  margin-left: calc(100% - 6rem);
+  margin-top: -6rem;
+
+  border-radius: 2rem;
+  border: #2b2b2b solid 1px;
+
+  text-align: center;
+  font-size: 3rem;
+}
+
+.add-characteristic-type-btn p {
+  font-size: 4rem;
+  margin-top: -1.75rem;
+  margin-left: -0.25rem;
+}
