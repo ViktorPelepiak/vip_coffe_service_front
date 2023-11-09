@@ -10,31 +10,32 @@ export class MachineBrandService {
   constructor(private http: HttpClient) {
   }
 
-    getAllBrands() : Observable<CustomResponse> {
+  getAllBrands(): Observable<CustomResponse> {
     return this.http.get<CustomResponse>(SERVER_URL + `/machine/brand/`, HTTP_OPTIONS);
   }
 
-  saveBrandName(newBrandName: string) : Observable<CustomResponse> {
+  saveBrandName(newBrandName: string): Observable<CustomResponse> {
     return this.http.post<CustomResponse>(
       SERVER_URL + `/machine/brand/`,
       {
-        "newBrandName" : newBrandName
+        "newBrandName": newBrandName
       },
       HTTP_OPTIONS
     )
   }
 
-  editBrandName(brandId: bigint, newValue: string) : Observable<CustomResponse> {
+  editBrandName(brandId: bigint, newValue: string): Observable<CustomResponse> {
     return this.http.put<CustomResponse>(
       SERVER_URL + `/machine/brand/`,
       {
-        "brandId" : brandId,
-        "newValue" : newValue
+        "brandId": brandId,
+        "newValue": newValue
       },
       HTTP_OPTIONS
     );
   }
-  deleteBrand(brandId : bigint) : Observable<CustomResponse> {
+
+  deleteBrand(brandId: bigint): Observable<CustomResponse> {
     return this.http.delete<CustomResponse>(
       SERVER_URL + `/machine/brand/` + brandId,
       HTTP_OPTIONS

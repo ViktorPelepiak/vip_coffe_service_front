@@ -1,4 +1,4 @@
-import {InjectionToken, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -8,12 +8,14 @@ import {FooterComponent} from './components/footer/footer.component';
 import {HomeComponent} from './components/home/home.component';
 import {LoginComponent} from './components/security/login/login.component';
 import {ReactiveFormsModule} from "@angular/forms";
-import {HttpClient, HttpClientModule, HttpHandler} from "@angular/common/http";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {RegistrationComponent} from './components/security/registration/registration.component';
 import {ConfirmationComponent} from './components/security/confirmation/confirmation.component';
-import {AdministrationComponent} from './components/administration/administration.component';
 import {AdministrationBrandsComponent} from './components/administration-brands/administration-brands.component';
-import { AdministrationModelsComponent } from './components/administration-models/administration-models.component';
+import {AdministrationModelsComponent} from './components/administration-models/administration-models.component';
+import {
+  AdministrationPartTypesComponent
+} from './components/administration-part-types/administration-part-types.component';
 
 @NgModule({
   declarations: [
@@ -24,9 +26,9 @@ import { AdministrationModelsComponent } from './components/administration-model
     LoginComponent,
     RegistrationComponent,
     ConfirmationComponent,
-    AdministrationComponent,
     AdministrationBrandsComponent,
-    AdministrationModelsComponent
+    AdministrationModelsComponent,
+    AdministrationPartTypesComponent
   ],
   imports: [
     BrowserModule,

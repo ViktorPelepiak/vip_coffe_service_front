@@ -22,10 +22,20 @@
         <a *ngIf="isUserLoggedIn" class="nav-link" [routerLink]="['/contacts']">Contacts</a>
       </li>
       <li>
-        <a *ngIf="isLoggedUserIsAdmin" class="nav-link" [routerLink]="['/administration']">Адміністрування</a>
+<!--        <a *ngIf="isLoggedUserIsAdmin" class="nav-link" [routerLink]="['/administration']">Адміністрування</a>-->
+        <div *ngIf="isLoggedUserIsAdmin" class="dropdown">
+          <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Адміністрування
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" [routerLink]="['/administration/brands']">Бренди</a>
+            <a class="dropdown-item" [routerLink]="['/administration/models']">Моделі</a>
+            <a class="dropdown-item" [routerLink]="['/administration/part_types']">Деталі</a>
+          </div>
+        </div>
       </li>
       <li>
-        <a *ngIf="isLoggedUserIsAdmin" class="nav-link" href="/" (click)=handleLogout()>Logout</a>
+        <a *ngIf="isUserLoggedIn" class="nav-link" href="/" (click)=handleLogout()>Logout</a>
       </li>
     </ul>
   </nav>

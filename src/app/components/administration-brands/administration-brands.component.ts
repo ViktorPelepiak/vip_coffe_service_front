@@ -9,6 +9,7 @@ import {Brand} from "../../models/brand";
 })
 export class AdministrationBrandsComponent {
   public brands : Brand[] = [];
+
   constructor(
     private machineModelService : MachineBrandService
   ) {
