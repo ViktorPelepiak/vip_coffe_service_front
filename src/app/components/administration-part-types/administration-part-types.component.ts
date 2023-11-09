@@ -15,7 +15,6 @@ export class AdministrationPartTypesComponent {
   ) {
     partTypeService.getAllPartTypes().subscribe( response => {
       this.partTypes = response.result;
-      console.log( "brands => " + JSON.stringify(this.partTypes));
 
       this.rebuildTable();
     });

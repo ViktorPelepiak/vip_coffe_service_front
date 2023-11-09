@@ -9,6 +9,9 @@ import {AdministrationModelsComponent} from "./components/administration-models/
 import {
   AdministrationPartTypesComponent
 } from "./components/administration-part-types/administration-part-types.component";
+import {
+  AdministrationCharacteristicTypesComponent
+} from "./components/administration-characteristic-types/administration-characteristic-types.component";
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
@@ -17,7 +20,8 @@ const routes: Routes = [
   {path: "user/verification", component:ConfirmationComponent},
   {path: "administration/brands", component:AdministrationBrandsComponent},
   {path: "administration/models", component:AdministrationModelsComponent},
-  {path: "administration/part_types", component:AdministrationPartTypesComponent}
+  {path: "administration/part_types", component:AdministrationPartTypesComponent},
+  {path: "administration/characteristics", component:AdministrationCharacteristicTypesComponent}
 ];
 
 @NgModule({

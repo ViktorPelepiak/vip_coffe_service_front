@@ -16,6 +16,7 @@ import {AdministrationModelsComponent} from './components/administration-models/
 import {
   AdministrationPartTypesComponent
 } from './components/administration-part-types/administration-part-types.component';
+import { AdministrationCharacteristicTypesComponent } from './components/administration-characteristic-types/administration-characteristic-types.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {
     ConfirmationComponent,
     AdministrationBrandsComponent,
     AdministrationModelsComponent,
-    AdministrationPartTypesComponent
+    AdministrationPartTypesComponent,
+    AdministrationCharacteristicTypesComponent
   ],
   imports: [
     BrowserModule,

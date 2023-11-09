@@ -1,0 +1,88 @@
+<div id="administration" class="d-flex align-items-center justify-content-center">
+  <table id="characteristicTypeTable" class="table table-stripped table-hover">
+  </table>
+
+
+</div>
+<button class="btn add-characteristic-type-btn" data-toggle="modal" data-target="#addCharacteristicTypeModal"><p>+</p></button>
+
+<div class="modal fade" id="addCharacteristicTypeModal" tabindex="-1" role="dialog" aria-labelledby="addCharacteristicTypeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog my-modal" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title translatable" id="addCharacteristicTypeModalLabel">Додати тип характеристики</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span class="modal-title" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body my-modal-body">
+        <div class="modal-container">
+          <label for="newCharacteristicType">Нова характеристика</label>
+          <input id="newCharacteristicType" type="text" class="form-control">
+          <label for="newCharacteristicType" class="newCharacteristicTypeError" style="display: none"></label>
+
+          <label for="newMeasurementUnit">Одиниці виміру</label>
+          <input id="newMeasurementUnit" type="text" class="form-control">
+          <label for="newMeasurementUnit" class="newMeasurementUnitError" style="display: none"></label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Скасувати</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="sendSaveRequest()">Зберегти</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editCharacteristicTypeModal" tabindex="-1" role="dialog" aria-labelledby="editCharacteristicTypeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog my-modal" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title translatable" id="editCharacteristicTypeModalLabel">Зміна типу характеристики</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span class="modal-title" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body my-modal-body">
+        <div class="modal-container">
+          <input id="characteristicId" type="text" hidden>
+          <label for="characteristicName">Назва характеристики</label>
+          <input id="characteristicName" type="text" class="form-control">
+          <label for="measurementUnit">Одиниці виміру</label>
+          <input id="measurementUnit" type="text" class="form-control">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Скасувати</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="sendEditRequest()">Зберегти</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="deleteCharacteristicModal" tabindex="-1" role="dialog" aria-labelledby="deleteCharacteristicModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog my-modal" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title translatable" id="deleteCharacteristicModalLabel">Видалити тип характеристики</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span class="modal-title" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body my-modal-body">
+        <div class="modal-container">
+          <input id="deleteCharacteristicTypeId" type="text" hidden>
+          <h3 id="removeQuestion"></h3>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Скасувати</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="sendDeleteRequest()">Видалити
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
