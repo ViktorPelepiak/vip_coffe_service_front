@@ -1,0 +1,81 @@
+<div id="administration" class="d-flex align-items-center justify-content-center">
+  <table id="partTypeTable" class="table table-stripped table-hover">
+  </table>
+
+
+</div>
+<button class="btn add-part-type-btn" data-toggle="modal" data-target="#addPartTypeModal"><p>+</p></button>
+
+<div class="modal fade" id="addPartTypeModal" tabindex="-1" role="dialog" aria-labelledby="addPartTypeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog my-modal" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title translatable" id="addPartTypeModalLabel">Додати тип деталі</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span class="modal-title" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body my-modal-body">
+        <div class="modal-container">
+          <label for="newPartType">Нова деталь</label>
+          <input id="newPartType" type="text" class="form-control">
+          <label for="newPartType" class="newPartTypeError" style="display: none"></label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Скасувати</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="sendSaveRequest()">Зберегти</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editPartTypeModal" tabindex="-1" role="dialog" aria-labelledby="editPartTypeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog my-modal" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title translatable" id="editPartTypeModalLabel">Зміна назви деталі</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span class="modal-title" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body my-modal-body">
+        <div class="modal-container">
+          <input id="partTypeId" type="text" hidden>
+          <input id="partTypeName" type="text" class="form-control">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Скасувати</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="sendEditRequest()">Зберегти</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="deletePartTypeModal" tabindex="-1" role="dialog" aria-labelledby="deletePartTypeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog my-modal" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title translatable" id="deletePartTypeModalLabel">Видалити деталь</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span class="modal-title" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body my-modal-body">
+        <div class="modal-container">
+          <input id="deletePartTypeId" type="text" hidden>
+          <h3 id="removeQuestion"></h3>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Скасувати</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="sendDeleteRequest()">Видалити
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
