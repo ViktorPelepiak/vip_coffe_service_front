@@ -12,6 +12,8 @@ import {
 import {
   AdministrationCharacteristicTypesComponent
 } from "./components/administration-characteristic-types/administration-characteristic-types.component";
+import {CoffeeMachineNewComponent} from "./components/coffee-machine-new/coffee-machine-new.component";
+import {CoffeeMachineAllComponent} from "./components/coffee-machine-all/coffee-machine-all.component";
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
@@ -21,7 +23,9 @@ const routes: Routes = [
   {path: "administration/brands", component:AdministrationBrandsComponent},
   {path: "administration/models", component:AdministrationModelsComponent},
   {path: "administration/part_types", component:AdministrationPartTypesComponent},
-  {path: "administration/characteristics", component:AdministrationCharacteristicTypesComponent}
+  {path: "administration/characteristics", component:AdministrationCharacteristicTypesComponent},
+  {path: "coffee_machine/new", component: CoffeeMachineNewComponent},
+  {path: "coffee_machine", component:CoffeeMachineAllComponent}
 ];
 
 @NgModule({

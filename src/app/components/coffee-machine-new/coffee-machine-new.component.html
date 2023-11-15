@@ -1,0 +1,167 @@
+<div id="newCoffeeMachine" class="d-flex align-items-center justify-content-center">
+  <div class="form container">
+    <div class="row">
+      <div class="col">
+        <label for="brandSelect">Бренд</label>
+        <select id="brandSelect" name="brandSelect" class="form-control" (change)="handleBrandSelection()">
+          <option *ngFor="let curr_brand of this.brands" value="{{curr_brand.id}}">{{curr_brand.brand}}</option>
+        </select>
+      </div>
+
+      <div class="col">
+        <label for="modelSelect">Модель</label>
+        <select id="modelSelect" name="modelSelect" class="form-control">
+          <option *ngFor="let curr_model of this.models" value="{{curr_model.id}}">{{curr_model.model}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col" style="display: flex">
+        <input id="template" type="checkbox" class="form-control custom-checkbox" checked
+               (change)="isTemplateChangeHandler()">
+        <label for="template">Зберегти як шаблон</label>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="!isTemplate">
+      <div class="col">
+        <label for="uniqMachineNumber">Унікальний номер апарату</label>
+        <input type="text" id="uniqMachineNumber" name="uniqMachineNumber" class="form-control">
+      </div>
+      <div class="col">
+        <label for="warrantyEndDate">Гарантія до</label>
+        <input type="date" name="warrantyEndDate" id="warrantyEndDate" class="form-control">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <table class="table table-stripped table-hover">
+          <tbody>
+          <!--    header-->
+          <tr>
+            <th>Деталь</th>
+            <th>Характеристика</th>
+            <th>Значення</th>
+            <th>Одиниці виміру</th>
+            <th></th>
+            <th></th>
+          </tr>
+
+          <tr *ngFor="let partType of this.partTypesWithCharacteristics">
+            <td>{{partType.partType.type}}</td>
+            <td colspan="4">
+              <table class="table-characteristics">
+                <tr *ngFor="let characteristicWitValue of partType.characteristicsWithValues">
+                  <td>{{characteristicWitValue.characteristicType.type}}</td>
+                  <td>{{characteristicWitValue.characteristicTypeVal}}</td>
+                  <td>{{characteristicWitValue.characteristicType.measurementUnit}}</td>
+                  <td>
+                    <button type="button" class="btn btn-light btn-remove" (click)="removePartTypeCharacteristic(partType.partType.id, characteristicWitValue.characteristicType.id)">
+                      <i class="fa-solid fa-trash-can fa-2xl"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td colspan="4" class="col-plus">
+                    <button type="button" class="btn btn-light btn-plus" data-toggle="modal"
+                            data-target="#addPartTypeCharacteristicModal"
+                            (click)="prepareCharacteristicModalForPartWithId(partType.partType.id)">
+                      <i class="fa-solid fa-plus fa-2xl"></i>
+                    </button>
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td>
+              <button type="button" class="btn btn-light btn-remove" (click)="removePartTypeWitId(partType.partType.id)">
+                <i class="fa-solid fa-trash-can fa-2xl"></i>
+              </button>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="6" class="col-plus">
+              <button class="btn btn-light btn-plus" data-toggle="modal" data-target="#addPartTypeModal"
+                      (click)="prepareAvailablePartTypes()">
+                <i class="fa-solid fa-plus fa-2xl"></i>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="!isTemplate">
+      <div class="col">
+        <label for="additionalInformation">Додаткова інформація</label>
+        <textarea name="additionalInformation" id="additionalInformation" class="form-control"></textarea>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col submit-container">
+        <button type="submit" class="btn btn-success" (click)="onSubmit()">Зберегти</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="addPartTypeModal" tabindex="-1" role="dialog" aria-labelledby="addPartTypeModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog my-modal" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title translatable" id="addPartTypeModalLabel">Додати деталь</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span class="modal-title" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body my-modal-body">
+        <div class="modal-container">
+          <select name="addPartTypeSelect" id="addPartTypeSelect" class="form-control">
+            <option *ngFor="let pt of availablePartTypes" value="{{pt.id}}">{{pt.type}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Скасувати</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="addPartType()">Додати</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="addPartTypeCharacteristicModal" tabindex="-1" role="dialog"
+     aria-labelledby="addPartTypeCharacteristicModalLabel" aria-hidden="true">
+  <div class="modal-dialog my-modal" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title translatable" id="addPartTypeCharacteristicModalLabel">Додати характеристику</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span class="modal-title" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body my-modal-body">
+        <div class="modal-container">
+          <input type="text" name="partTypeId" id="partTypeId" hidden>
+          <label for="addPartTypeCharacteristicSelect">Характеристика та одиниця виміру</label>
+          <select name="addPartTypeCharacteristicSelect" id="addPartTypeCharacteristicSelect" class="form-control">
+            <option *ngFor="let ct of availablePartTypeCharacteristics" value="{{ct.id}}">{{ct.type + " | " + ct.measurementUnit}}</option>
+          </select>
+          <label for="partTypeCharacteristicValue">Значення</label>
+          <input type="text" id="partTypeCharacteristicValue" name="partTypeCharacteristicValue" class="form-control">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Скасувати</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="addPartTypeCharacteristic()">Додати</button>
+      </div>
+    </div>
+  </div>
+</div>

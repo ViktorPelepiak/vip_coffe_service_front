@@ -1,5 +1,5 @@
 export interface Brand {
-  id: bigint;
+  id: number;
   brand: string;
 
 

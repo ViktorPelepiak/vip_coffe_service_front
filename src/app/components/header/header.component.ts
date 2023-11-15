@@ -11,12 +11,14 @@ import {AuthenticationService} from "../../services/authentication.service";
 export class HeaderComponent {
   isUserLoggedIn : Boolean
   isLoggedUserIsAdmin : Boolean
+  isLoggedUserIsMaster : Boolean
 
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private authService: AuthenticationService) {
     this.isUserLoggedIn = authService.isUserLoggedIn();
+    this.isLoggedUserIsMaster = authService.isMaster();
     this.isLoggedUserIsAdmin = authService.isAdmin();
   }
 

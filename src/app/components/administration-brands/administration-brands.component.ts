@@ -133,7 +133,6 @@ export class AdministrationBrandsComponent {
       headerRow.appendChild(removeH);
       tbody.appendChild(headerRow);
 
-      console.log("brands.length => " + this.brands.length)
       for (let i = 0; i < this.brands.length; i++) {
         var contentRaw = document.createElement("tr");
 

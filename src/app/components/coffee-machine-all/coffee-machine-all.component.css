@@ -1,0 +1,14 @@
+#footer {
+  margin-top: -4.5rem !important;
+}
+
+#allCoffeeMachine {
+  height: calc(100vh - 4.5rem);
+  width: 100vw;
+
+  background-image: url("/assets/images/background_without_logo.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  padding-top: 11rem;
+}
