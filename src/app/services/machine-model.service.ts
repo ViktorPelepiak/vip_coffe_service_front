@@ -11,12 +11,12 @@ export class MachineModelService {
   }
 
   getAllModels() : Observable<CustomResponse> {
-    return this.http.get<CustomResponse>(SERVER_URL + `/machine/model/`, HTTP_OPTIONS);
+    return this.http.get<CustomResponse>(SERVER_URL + `/machine/models/`, HTTP_OPTIONS);
   }
 
   saveModel(newBrandName: String, newModelName: String) : Observable<CustomResponse> {
     return this.http.post<CustomResponse>(
-      SERVER_URL + `/machine/model/`,
+      SERVER_URL + `/machine/models/`,
       {
         "brand" : newBrandName,
         "model" : newModelName
@@ -27,7 +27,7 @@ export class MachineModelService {
 
   editModel(modelId: bigint, brandName: string, modelName:string) : Observable<CustomResponse> {
     return this.http.put<CustomResponse>(
-      SERVER_URL + '/machine/model/',
+      SERVER_URL + '/machine/models/',
       {
         "id" : modelId,
         "brandName" : brandName,
@@ -39,8 +39,12 @@ export class MachineModelService {
 
   deleteModel(modelId : bigint) : Observable<CustomResponse> {
     return this.http.delete<CustomResponse>(
-      SERVER_URL + `/machine/model/` + modelId,
+      SERVER_URL + `/machine/models/` + modelId,
       HTTP_OPTIONS
     );
+  }
+
+  getAllModelsForBrandWithId(brandId: number) {
+    return this.http.get<CustomResponse>(SERVER_URL + `/machine/models/for_brand/` + brandId, HTTP_OPTIONS);
   }
 }

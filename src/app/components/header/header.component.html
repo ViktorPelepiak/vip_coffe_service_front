@@ -19,10 +19,9 @@
         <a *ngIf="!isUserLoggedIn" class="nav-link" [routerLink]="['/login']">Вхід</a>
       </li>
       <li>
-        <a *ngIf="isUserLoggedIn" class="nav-link" [routerLink]="['/contacts']">Contacts</a>
+        <a *ngIf="isLoggedUserIsMaster" class="nav-link" [routerLink]="['/coffee_machine/new']">Додати кавовий апарат</a>
       </li>
       <li>
-<!--        <a *ngIf="isLoggedUserIsAdmin" class="nav-link" [routerLink]="['/administration']">Адміністрування</a>-->
         <div *ngIf="isLoggedUserIsAdmin" class="dropdown">
           <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Адміністрування

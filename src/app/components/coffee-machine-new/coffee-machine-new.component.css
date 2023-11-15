@@ -1,0 +1,52 @@
+#footer {
+  margin-top: -4.5rem !important;
+}
+
+#newCoffeeMachine {
+  height: calc(100vh - 4.5rem);
+  width: 100vw;
+
+  background-image: url("/assets/images/background_without_logo.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  padding-top: 11rem;
+}
+
+.custom-checkbox {
+  width: 2rem;
+  margin-right: 1rem;
+}
+
+.btn-plus {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid #2b2b2b;
+  border-radius: 50%;
+}
+
+.btn-plus > i {
+  margin-left: -0.85rem;
+  position: absolute;
+}
+
+.col-plus {
+  text-align: center;
+}
+
+.table-characteristics {
+  width: 100%;
+}
+
+.table td, .table th {
+  vertical-align: middle;
+}
+
+.submit-container {
+  text-align: right;
+}
+
+.row {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}

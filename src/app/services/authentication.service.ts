@@ -56,10 +56,13 @@ export class AuthenticationService {
     return user !== null;
   }
 
+  isMaster() {
+    let user = sessionStorage.getItem(AuthenticationService.USER_ROLE);
+    return user != null && user.split(",").includes('MASTER');
+  }
+
   isAdmin() {
     let user = sessionStorage.getItem(AuthenticationService.USER_ROLE);
-    console.log(user);
-    console.log("isAdmin => " + (user != null && user.split(",").includes('ADMIN')));
     return user != null && user.split(",").includes('ADMIN');
   }
 }
