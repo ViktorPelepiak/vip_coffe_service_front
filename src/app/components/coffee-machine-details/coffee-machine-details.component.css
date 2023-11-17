@@ -1,0 +1,27 @@
+#footer {
+  margin-top: -4.5rem !important;
+}
+
+#coffeeMachineDetails {
+  height: calc(100vh - 4.5rem);
+  width: 100vw;
+
+  background-image: url("/assets/images/background_without_logo.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  padding-top: 11rem;
+}
+
+.table-characteristics {
+  width: 100%;
+}
+
+.table td, .table th {
+  vertical-align: middle;
+}
+
+.row {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}

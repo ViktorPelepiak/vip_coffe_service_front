@@ -11,9 +11,7 @@ import {CharacteristicType} from "../../models/characteristicType";
 import {CharacteristicTypeService} from "../../services/characteristic-type.service";
 import {PartTypeCharacteristicWithValue} from "../../models/partTypeCharacteristicWithValue";
 import {CoffeeMachineService} from "../../services/coffee-machine.service";
-import {Observable} from "rxjs";
-import {CustomResponse} from "../../models/customResponse";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-coffee-machine-new',
@@ -21,29 +19,51 @@ import {Router} from "@angular/router";
   styleUrls: ['./coffee-machine-new.component.css']
 })
 export class CoffeeMachineNewComponent {
-  public isTemplate : Boolean = true;
-  public brands : Brand[] = [];
-  public models : Model[] = [];
-  public availablePartTypes : PartType[] = [];
-  public availablePartTypeCharacteristics : CharacteristicType[] = [];
+  public templateId;
+  public isTemplate: Boolean = true;
+  public brands: Brand[] = [];
+  public models: Model[] = [];
+  public availablePartTypes: PartType[] = [];
+  public availablePartTypeCharacteristics: CharacteristicType[] = [];
 
-  public partTypesWithCharacteristics : PartTypeWithCharacteristic[] = [];
+  public partTypesWithCharacteristics: PartTypeWithCharacteristic[] = [];
 
   constructor(
-    private characteristicTypeService : CharacteristicTypeService,
-    private coffeeMachineService : CoffeeMachineService,
+    private activatedRoute: ActivatedRoute,
+    private characteristicTypeService: CharacteristicTypeService,
+    private coffeeMachineService: CoffeeMachineService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private machineBrandService : MachineBrandService,
-    private machineModelService : MachineModelService,
-    private partTypeService : PartTypeService
+    private machineBrandService: MachineBrandService,
+    private machineModelService: MachineModelService,
+    private partTypeService: PartTypeService
   ) {
-    machineBrandService.getAllBrands().subscribe( response => {
+    this.templateId = this.activatedRoute.snapshot.paramMap.get('templateId');
+
+    this.isTemplate = this.templateId == null;
+
+    machineBrandService.getAllBrands().subscribe(response => {
       this.brands = response.result;
 
-      this.machineModelService.getAllModelsForBrandWithId(this.brands[0].id).subscribe( response => {
-        this.models = response.result;
-      })
+      if (this.templateId != null) {
+        this.coffeeMachineService.getTemplateById(this.templateId).subscribe(response => {
+          this.partTypesWithCharacteristics = response.result.partTypesWithCharacteristics;
+
+          // @ts-ignore
+          document.getElementById("brandSelect").value = response.result.brandId;
+
+          this.machineModelService.getAllModelsForBrandWithId(response.result.brandId).subscribe(response => {
+            this.models = response.result;
+
+            // @ts-ignore
+            document.getElementById("modelSelect").value = response.result.modelId;
+          })
+        })
+      } else {
+        this.machineModelService.getAllModelsForBrandWithId(this.brands[0].id).subscribe(response => {
+          this.models = response.result;
+        })
+      }
     });
   }
 
@@ -55,11 +75,11 @@ export class CoffeeMachineNewComponent {
     var brandSelect = document.getElementById("brandSelect");
     var brandId;
     if (brandSelect) {
-       // @ts-ignore
+      // @ts-ignore
       brandId = brandSelect.value;
     }
     console.log("models for brand with id= \"" + brandId + "\"")
-    this.machineModelService.getAllModelsForBrandWithId(brandId).subscribe( response => {
+    this.machineModelService.getAllModelsForBrandWithId(brandId).subscribe(response => {
       this.models = response.result;
     })
   }
@@ -67,9 +87,9 @@ export class CoffeeMachineNewComponent {
   prepareAvailablePartTypes() {
     this.availablePartTypes = [];
     let selectedPartTypes = this.partTypesWithCharacteristics.map(pt => pt.partType);
-    this.partTypeService.getAllPartTypes().subscribe( response => {
-      this.availablePartTypes = response.result.filter(function(pt1 : PartType) {
-        return !selectedPartTypes.some(function(pt2 : PartType) {
+    this.partTypeService.getAllPartTypes().subscribe(response => {
+      this.availablePartTypes = response.result.filter(function (pt1: PartType) {
+        return !selectedPartTypes.some(function (pt2: PartType) {
           return pt1.id == pt2.id;
         });
       });
@@ -81,7 +101,7 @@ export class CoffeeMachineNewComponent {
     let partTypeId = document.getElementById("addPartTypeSelect").value;
     if (partTypeId) {
       for (let pt of this.availablePartTypes) {
-        if (pt.id == partTypeId){
+        if (pt.id == partTypeId) {
           this.partTypesWithCharacteristics.push(new PartTypeWithCharacteristic(pt, []));
         }
       }
@@ -93,7 +113,7 @@ export class CoffeeMachineNewComponent {
     document.getElementById("partTypeId").value = partTypeId;
 
     this.availablePartTypeCharacteristics = [];
-    let selectedCharTypes : CharacteristicType[] = [];
+    let selectedCharTypes: CharacteristicType[] = [];
     for (let pt of this.partTypesWithCharacteristics) {
       if (pt.partType.id == partTypeId) {
         selectedCharTypes = pt.characteristicsWithValues.map(char => char.characteristicType);
@@ -101,8 +121,8 @@ export class CoffeeMachineNewComponent {
       }
     }
     this.characteristicTypeService.getAllCharacteristicTypes().subscribe(response => {
-      this.availablePartTypeCharacteristics = response.result.filter(function(ct1 : CharacteristicType) {
-        return !selectedCharTypes.some(function(ct2 : CharacteristicType) {
+      this.availablePartTypeCharacteristics = response.result.filter(function (ct1: CharacteristicType) {
+        return !selectedCharTypes.some(function (ct2: CharacteristicType) {
           return ct1.id == ct2.id;
         });
       });
@@ -148,7 +168,7 @@ export class CoffeeMachineNewComponent {
   removePartTypeWitId(partTypeId: number) {
     let position = 0;
     for (let pt of this.partTypesWithCharacteristics) {
-      if (pt.partType.id == partTypeId){
+      if (pt.partType.id == partTypeId) {
         break;
       }
       ++position;
@@ -160,14 +180,14 @@ export class CoffeeMachineNewComponent {
   removePartTypeCharacteristic(partTypeId: number, characteristicId: number) {
     let position = 0;
     for (let pt of this.partTypesWithCharacteristics) {
-      if (pt.partType.id == partTypeId){
+      if (pt.partType.id == partTypeId) {
         break;
       }
       ++position;
     }
     let partType = this.partTypesWithCharacteristics[position];
     position = 0;
-    for(let char of partType.characteristicsWithValues) {
+    for (let char of partType.characteristicsWithValues) {
       if (char.characteristicType.id == characteristicId) {
         break;
       }
@@ -181,9 +201,14 @@ export class CoffeeMachineNewComponent {
     // @ts-ignore
     let modelId = document.getElementById("modelSelect").value;
 
-    let sub : Observable<CustomResponse>;
+    console.log("isTemplate => " + this.isTemplate);
     if (this.isTemplate) {
-      sub = this.coffeeMachineService.saveTemplate(modelId, this.partTypesWithCharacteristics);
+      this.coffeeMachineService.saveTemplate(modelId, this.partTypesWithCharacteristics)
+        .subscribe(response => {
+          if (response.success) {
+            this.router.navigate(['/coffee_machine']);
+          }
+        })
     } else {
       // @ts-ignore
       let uniqMachineNumber = document.getElementById("uniqMachineNumber").value;
@@ -192,13 +217,16 @@ export class CoffeeMachineNewComponent {
       // @ts-ignore
       let additionalInformation = document.getElementById("additionalInformation").value;
 
-      sub = this.coffeeMachineService.saveMachine(modelId, this.partTypesWithCharacteristics, uniqMachineNumber, warrantyEndDate, additionalInformation);
-    }
+      this.coffeeMachineService.isMachineWithUniqNumberExist(uniqMachineNumber).subscribe(response => {
+        if (response.result) return;
 
-    sub.subscribe(response => {
-      if(response.success) {
-        this.router.navigate(['/']);
-      }
-    })
+        this.coffeeMachineService.saveMachine(modelId, this.partTypesWithCharacteristics, uniqMachineNumber, warrantyEndDate, additionalInformation)
+          .subscribe(response => {
+            if (response.success) {
+              this.router.navigate(['/coffee_machine']);
+            }
+          })
+      })
+    }
   }
 }

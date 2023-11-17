@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row" *ngIf="this.templateId == null">
       <div class="col" style="display: flex">
         <input id="template" type="checkbox" class="form-control custom-checkbox" checked
                (change)="isTemplateChangeHandler()">

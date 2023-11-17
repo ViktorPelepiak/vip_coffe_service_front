@@ -19,6 +19,7 @@ import {
 import { AdministrationCharacteristicTypesComponent } from './components/administration-characteristic-types/administration-characteristic-types.component';
 import { CoffeeMachineNewComponent } from './components/coffee-machine-new/coffee-machine-new.component';
 import { CoffeeMachineAllComponent } from './components/coffee-machine-all/coffee-machine-all.component';
+import { CoffeeMachineDetailsComponent } from './components/coffee-machine-details/coffee-machine-details.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { CoffeeMachineAllComponent } from './components/coffee-machine-all/coffe
     AdministrationPartTypesComponent,
     AdministrationCharacteristicTypesComponent,
     CoffeeMachineNewComponent,
-    CoffeeMachineAllComponent
+    CoffeeMachineAllComponent,
+    CoffeeMachineDetailsComponent
   ],
   imports: [
     BrowserModule,

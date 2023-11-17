@@ -1,0 +1,64 @@
+<div id="coffeeMachineDetails" class="d-flex align-items-center justify-content-center">
+  <div class="form container">
+    <div class="row">
+      <div class="col">
+        <label for="brand">Бренд</label>
+        <input type="text" name="brand" id="brand" class="form-control" disabled value="{{machine.brand}}">
+      </div>
+
+      <div class="col">
+        <label for="model">Модель</label>
+        <input type="text" name="model" id="model" class="form-control" disabled value="{{machine.model}}">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label for="uniqMachineNumber">Унікальний номер апарату</label>
+        <input type="text" id="uniqMachineNumber" name="uniqMachineNumber" class="form-control" disabled
+               value="{{machine.uniqMachineNumber}}">
+      </div>
+      <div class="col">
+        <label for="warrantyEndDate">Гарантія до</label>
+        <input type="text" name="warrantyEndDate" id="warrantyEndDate" class="form-control" disabled
+               value="{{machine.warrantyUntil}}">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <table class="table table-stripped table-hover">
+          <tbody>
+          <!--    header-->
+          <tr>
+            <th>Деталь</th>
+            <th>Характеристика</th>
+            <th>Значення</th>
+            <th>Одиниці виміру</th>
+          </tr>
+
+          <tr *ngFor="let partType of this.machine.partTypesWithCharacteristics">
+            <td>{{partType.partType.type}}</td>
+            <td colspan="3">
+              <table class="table-characteristics">
+                <tr *ngFor="let characteristicWitValue of partType.characteristicsWithValues">
+                  <td>{{characteristicWitValue.characteristicType.type}}</td>
+                  <td>{{characteristicWitValue.characteristicTypeVal}}</td>
+                  <td>{{characteristicWitValue.characteristicType.measurementUnit}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label for="additionalInformation">Додаткова інформація</label>
+        <p id="additionalInformation">{{machine.additionalInfo}}</p>
+      </div>
+    </div>
+  </div>
+</div>

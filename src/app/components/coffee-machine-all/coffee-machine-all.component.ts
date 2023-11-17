@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import {TemplateShort} from "../../models/coffeeMachine";
+import {MachineShort, TemplateShort} from "../../models/coffeeMachine";
 import {CoffeeMachineService} from "../../services/coffee-machine.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-coffee-machine-all',
@@ -10,13 +11,25 @@ import {CoffeeMachineService} from "../../services/coffee-machine.service";
 export class CoffeeMachineAllComponent {
 
   templates : TemplateShort[] = [];
+  machines : MachineShort[] = [];
 
-
-  constructor(private coffeeMachineService : CoffeeMachineService) {
+  constructor(private coffeeMachineService : CoffeeMachineService,
+              private router: Router
+  ) {
     this.coffeeMachineService.getAllTemplates().subscribe( response => {
       this.templates = response.result;
-
-      console.log(JSON.stringify("templates => " + this.templates))
     })
+
+    this.coffeeMachineService.getAllMachines().subscribe(response => {
+      this.machines = response.result;
+    })
+  }
+
+  createMachineFromTemplate(templateId: number) {
+    this.router.navigate([('/coffee_machine/new/' + templateId)]);
+  }
+
+  loadDetailInformation(machineId: number) {
+    this.router.navigate([('/coffee_machine/' + machineId)]);
   }
 }
