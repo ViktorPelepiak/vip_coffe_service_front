@@ -1,5 +1,126 @@
 <div id="allCoffeeMachine" class="d-flex align-items-center justify-content-center">
   <div class="form container">
+    <div class="card-container">
+      <div class="card" *ngFor="let machine of machines">
+        <div class="card-body">
+          <div class="col">
+            <div class="row">
+              <div class="col">
+                Бренд:
+              </div>
+              <div class="col">
+                {{machine.brand}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                Модель:
+              </div>
+              <div class="col">{{machine.model}}</div>
+            </div>
+            <div class="row">
+              <div class="col">
+                Унікальний №:
+              </div>
+              <div class="col">
+                {{machine.uniqMachineNumber}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                Гарантія до:
+              </div>
+              <div class="col">
+                {{machine.warrantyUntil}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                Власник
+              </div>
+              <div class="col">
+                {{machine.owner}}
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary btn-detail" (click)="loadDetailInformation(machine.id)">
+              Детальна інформація
+            </button>
 
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="btn add-machine-btn" data-toggle="modal" data-target="#addMachineModal"><p>+</p></button>
+
+<div class="modal fade" id="addMachineModal" tabindex="-1" role="dialog" aria-labelledby="addMachineModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog my-modal" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title translatable" id="addMachineModalLabel">Додати кавову машину</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span class="modal-title" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body my-modal-body">
+        <div class="modal-container">
+          <div class="row">
+            <div class="col">
+              <button class="btn btn-success" data-dismiss="modal" [routerLink]="['/coffee_machine/new']">Створити нову
+                машину або шаблон
+              </button>
+            </div>
+            <div class="col">
+              <button class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#fromPatternModal">
+                Створити машину з шаблону
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Скасувати</button>
+        <!--        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="sendSaveRequest()">Зберегти</button>-->
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="fromPatternModal" tabindex="-1" role="dialog" aria-labelledby="fromPatternModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog my-modal" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title translatable" id="fromPatternModalLabel">Додати кавову машину</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span class="modal-title" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body my-modal-body">
+        <div class="modal-container">
+          <div class="row">
+            <div class="col">
+              <!--              <button class="btn btn-success" data-dismiss="modal" [routerLink]="['/coffee_machine/new']">Створити нову машину або шаблон</button>-->
+              <div class="scroll-container" style="overflow: auto">
+                <div *ngFor="let template of templates" class="scroll-item card"
+                     (click)="createMachineFromTemplate(template.id)">
+                  <p>{{ template.brand }}</p>
+                  <p>{{ template.model }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Скасувати</button>
+        <!--        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="sendSaveRequest()">Зберегти</button>-->
+      </div>
+    </div>
   </div>
 </div>

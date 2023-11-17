@@ -49,3 +49,26 @@ export class MachineShort {
     this.owner = owner;
   }
 }
+
+export class MachineFull {
+  id : number;
+  uniqMachineNumber : string;
+  brand : string;
+  model : string;
+  warrantyUntil : string;
+  owner : string;
+  additionalInfo : string;
+  partTypesWithCharacteristics : PartTypeWithCharacteristic[];
+
+  constructor(id: number, uniqMachineNumber: string, brand: string, model: string, warrantyUntil: string, owner: string,
+              additionalInfo: string, partTypesWithCharacteristics: PartTypeWithCharacteristic[]) {
+    this.id = id;
+    this.uniqMachineNumber = uniqMachineNumber;
+    this.brand = brand;
+    this.model = model;
+    this.warrantyUntil = warrantyUntil;
+    this.owner = owner;
+    this.additionalInfo = additionalInfo;
+    this.partTypesWithCharacteristics = partTypesWithCharacteristics;
+  }
+}

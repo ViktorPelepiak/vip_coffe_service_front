@@ -12,3 +12,93 @@
 
   padding-top: 11rem;
 }
+
+.add-machine-btn {
+  width: 4rem;
+  height: 4rem;
+
+  position: absolute;
+  margin-left: calc(100% - 6rem);
+  margin-top: -6rem;
+
+  border-radius: 2rem;
+  border: #2b2b2b solid 1px;
+
+  text-align: center;
+  font-size: 3rem;
+}
+
+.add-machine-btn p {
+  font-size: 4rem;
+  margin-top: -1.75rem;
+  margin-left: -0.25rem;
+}
+
+.scroll-container {
+  border: 2px solid silver;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.scroll-item {
+  white-space: nowrap;
+  background: #efefef;
+  border: 1px solid #efefef;
+  margin: .1rem;
+  padding: .2rem .7rem;
+}
+
+.scroll-item:hover {
+   cursor: pointer;
+   border-color: #ccc;
+}
+
+.card-template {
+  width: 10rem;
+  min-width: 10rem;
+  height: 9rem;
+
+  margin: 1rem 0.5rem;
+  padding: 1rem;
+
+  border-radius: 0.5rem;
+
+  display: -webkit-box;
+}
+
+.card-container {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 21rem;
+  height: 18rem;
+
+  margin: 1rem;
+  padding: 1rem;
+
+  border-radius: 3rem;
+
+  display: -webkit-box;
+}
+
+.card-body {
+  height: 12rem;
+  width: 100%;
+  padding: 0;
+  font-size: 1.1rem;
+
+  display: block;
+  align-self: flex-end;
+}
+
+.btn-detail {
+  position: absolute;
+  right: 0rem;
+  bottom: -7rem;
+}

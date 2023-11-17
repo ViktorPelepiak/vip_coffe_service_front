@@ -43,4 +43,16 @@ export class CoffeeMachineService {
       HTTP_OPTIONS
     )
   }
+
+  getTemplateById(templateId : string) : Observable<CustomResponse> {
+    return this.http.get<CustomResponse>(SERVER_URL + '/machine/template/' + templateId, HTTP_OPTIONS)
+  }
+
+  isMachineWithUniqNumberExist(uniqNumber : string) : Observable<CustomResponse> {
+    return this.http.get<CustomResponse>(SERVER_URL + '/machine/exist/' + uniqNumber, HTTP_OPTIONS)
+  }
+
+  getMachineById(machineId: string) : Observable<CustomResponse> {
+    return this.http.get<CustomResponse>(SERVER_URL + '/machine/' + machineId, HTTP_OPTIONS)
+  }
 }
