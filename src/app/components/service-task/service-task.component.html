@@ -1,0 +1,75 @@
+<div id="taskDetails" class="d-flex align-items-center justify-content-center">
+  <div class="form container">
+    <div class="row">
+      <div class="col">
+        <label for="typeSelect">Тип операції</label>
+        <select name="type" id="typeSelect" class="form-control">
+          <option value="{{type.first}}" *ngFor="let type of types">{{type.second}}</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="statusSelect">Статус</label>
+        <select name="status" id="statusSelect" class="form-control">
+          <option value="{{status.first}}" *ngFor="let status of statuses">{{status.second}}</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="assigneeSelect">Майстер</label>
+        <select name="status" id="assigneeSelect" class="form-control">
+          <option value="{{master.second}}" *ngFor="let master of masters">{{master.second}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label for="estimation">Оцінка тривалості</label>
+        <input type="text" name="estimation" id="estimation" class="form-control">
+      </div>
+      <div class="col"></div>
+      <div class="col"></div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label for="dueDate">Зробити до</label>
+        <input type="datetime-local" name="dueDate" id="dueDate" class="form-control">
+      </div>
+      <div class="col">
+        <label for="startDate">Дата початку</label>
+        <input type="datetime-local" name="startDate" id="startDate" class="form-control">
+      </div>
+      <div class="col">
+        <label for="endDate">Дата завершення</label>
+        <input type="datetime-local" name="endDate" id="endDate" class="form-control">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label for="inputInfo">Вхідні дані</label>
+        <textarea name="inputInfo" id="inputInfo" class="form-control"></textarea>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label for="outputInfo">Робочі записи</label>
+        <textarea name="outputInfo" id="outputInfo" class="form-control"></textarea>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="row">
+          <button type="button" class="btn btn-success btn-save" *ngIf="taskId==null" (click)="sendSaveRequest()">
+            Додати запис
+          </button>
+          <button type="button" class="btn btn-success btn-save" *ngIf="taskId!=null" (click)="sendEditRequest()">
+            Зберегти зміни
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

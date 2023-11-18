@@ -20,6 +20,7 @@ import { AdministrationCharacteristicTypesComponent } from './components/adminis
 import { CoffeeMachineNewComponent } from './components/coffee-machine-new/coffee-machine-new.component';
 import { CoffeeMachineAllComponent } from './components/coffee-machine-all/coffee-machine-all.component';
 import { CoffeeMachineDetailsComponent } from './components/coffee-machine-details/coffee-machine-details.component';
+import { ServiceTaskComponent } from './components/service-task/service-task.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CoffeeMachineDetailsComponent } from './components/coffee-machine-detai
     AdministrationCharacteristicTypesComponent,
     CoffeeMachineNewComponent,
     CoffeeMachineAllComponent,
-    CoffeeMachineDetailsComponent
+    CoffeeMachineDetailsComponent,
+    ServiceTaskComponent
   ],
   imports: [
     BrowserModule,

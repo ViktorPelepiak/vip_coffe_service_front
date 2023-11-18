@@ -15,6 +15,7 @@ import {
 import {CoffeeMachineNewComponent} from "./components/coffee-machine-new/coffee-machine-new.component";
 import {CoffeeMachineAllComponent} from "./components/coffee-machine-all/coffee-machine-all.component";
 import {CoffeeMachineDetailsComponent} from "./components/coffee-machine-details/coffee-machine-details.component";
+import {ServiceTaskComponent} from "./components/service-task/service-task.component";
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
@@ -28,7 +29,9 @@ const routes: Routes = [
   {path: "coffee_machine/new", component: CoffeeMachineNewComponent},
   {path: "coffee_machine/new/:templateId", component: CoffeeMachineNewComponent},
   {path: "coffee_machine", component:CoffeeMachineAllComponent},
-  {path: "coffee_machine/:machineId", component: CoffeeMachineDetailsComponent}
+  {path: "coffee_machine/:machineId", component: CoffeeMachineDetailsComponent},
+  {path: "coffee_machine/:machineId/task", component: ServiceTaskComponent},
+  {path: "coffee_machine/:machineId/task/:taskId", component: ServiceTaskComponent}
 ];
 
 @NgModule({
