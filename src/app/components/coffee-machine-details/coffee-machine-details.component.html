@@ -60,5 +60,83 @@
         <p id="additionalInformation">{{machine.additionalInfo}}</p>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col">
+        <label for="serviceList">Дані про обслуговування</label>
+        <div id="serviceList">
+          <div *ngIf="tasks.length == 0">
+            Даних про обслуговування поки немає
+          </div>
+          <div *ngIf="tasks.length > 0">
+            <table class="table table-stripped table-hover">
+              <tbody>
+              <tr>
+                <th>
+                  №
+                </th>
+                <th>
+                  Тип операції
+                </th>
+                <th>
+                  Статус
+                </th>
+                <th>
+                  Дата початку
+                </th>
+                <th>
+                  Дата завершення
+                </th>
+                <th>
+                  Зробити до
+                </th>
+                <th>
+                  Відповідальний
+                </th>
+                <th *ngIf="isLoggedUserAdminOrMaster">
+                </th>
+              </tr>
+
+              <tr *ngFor="let task of tasks, let i = index ">
+                <td>
+                  {{i + 1}}
+                </td>
+                <td>
+                  {{task.type}}
+                </td>
+                <td>
+                  {{task.status}}
+                </td>
+                <td>
+                  {{task.startDate}}
+                </td>
+                <td>
+                  {{task.endDate}}
+                </td>
+                <td>
+                  {{task.dueDate}}
+                </td>
+                <td>
+                  {{task.assignee}}
+                </td>
+                <td *ngIf="isLoggedUserAdminOrMaster">
+                  <button type="button" class="btn btn-light" (click)="showTaskDetails(task.id)">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="row">
+            <button type="button" class="btn btn-light btn-plus" data-toggle="modal"
+                    data-target="#addPartTypeCharacteristicModal"
+                    (click)="addTask()">
+              <i class="fa-solid fa-plus fa-2xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
