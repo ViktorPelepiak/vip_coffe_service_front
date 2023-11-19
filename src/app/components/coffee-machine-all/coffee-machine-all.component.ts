@@ -26,10 +26,10 @@ export class CoffeeMachineAllComponent {
   }
 
   createMachineFromTemplate(templateId: number) {
-    this.router.navigate([('/coffee_machine/new/' + templateId)]);
+    this.router.navigate([('/coffee_machines/new/' + templateId)]);
   }
 
   loadDetailInformation(machineId: number) {
-    this.router.navigate([('/coffee_machine/' + machineId)]);
+    this.router.navigate([('/coffee_machines/' + machineId)]);
   }
 }

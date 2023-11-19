@@ -61,7 +61,7 @@ export class ServiceTaskComponent {
   sendSaveRequest() {
     this.taskService.save(this.prepareSaveRequestBody()).subscribe( response => {
       if (response.success) {
-        this.router.navigate(['/coffee_machine/' + this.machineId])
+        this.router.navigate(['/coffee_machines/' + this.machineId])
       }
     })
   }
@@ -69,7 +69,7 @@ export class ServiceTaskComponent {
   sendEditRequest() {
     this.taskService.edit(this.prepareEditRequestBody()).subscribe( response => {
       if (response.success) {
-        this.router.navigate(['/coffee_machine/' + this.machineId])
+        this.router.navigate(['/coffee_machines/' + this.machineId])
       }
     })
   }

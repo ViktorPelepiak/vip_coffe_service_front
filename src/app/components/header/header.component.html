@@ -19,7 +19,10 @@
         <a *ngIf="!isUserLoggedIn" class="nav-link" [routerLink]="['/login']">Вхід</a>
       </li>
       <li>
-        <a *ngIf="isLoggedUserIsMaster" class="nav-link" [routerLink]="['/coffee_machine']">Кавові апарат</a>
+        <a *ngIf="isUserLoggedIn" class="nav-link" [routerLink]="['/my_machines']">Мої апарати</a>
+      </li>
+      <li>
+        <a *ngIf="isLoggedUserIsMaster" class="nav-link" [routerLink]="['/coffee_machines']">Кавові апарати</a>
       </li>
       <li>
         <div *ngIf="isLoggedUserIsAdmin" class="dropdown">

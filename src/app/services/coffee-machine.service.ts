@@ -12,16 +12,16 @@ export class CoffeeMachineService {
   }
 
   getAllMachines() : Observable<CustomResponse> {
-    return this.http.get<CustomResponse>(SERVER_URL + '/machine', HTTP_OPTIONS);
+    return this.http.get<CustomResponse>(SERVER_URL + '/machines', HTTP_OPTIONS);
   }
 
   getAllTemplates() : Observable<CustomResponse> {
-    return this.http.get<CustomResponse>(SERVER_URL + '/machine/template', HTTP_OPTIONS);
+    return this.http.get<CustomResponse>(SERVER_URL + '/machines/template', HTTP_OPTIONS);
   }
 
   saveTemplate(modelId: number, partTypesWithCharacteristics: PartTypeWithCharacteristic[]): Observable<CustomResponse> {
     return this.http.post<CustomResponse>(
-      SERVER_URL + '/machine/template',
+      SERVER_URL + '/machines/template',
       {
         "modelId": modelId,
         "partTypesWithCharacteristics": partTypesWithCharacteristics
@@ -32,7 +32,7 @@ export class CoffeeMachineService {
   saveMachine(modelId: number, partTypesWithCharacteristics: PartTypeWithCharacteristic[], uniqMachineNumber: string,
   warrantyEndDate: string, additionalInformation: string): Observable<CustomResponse> {
     return this.http.post<CustomResponse>(
-      SERVER_URL + '/machine',
+      SERVER_URL + '/machines',
       {
         "modelId": modelId,
         "uniqMachineNumber" : uniqMachineNumber,
@@ -45,14 +45,22 @@ export class CoffeeMachineService {
   }
 
   getTemplateById(templateId : string) : Observable<CustomResponse> {
-    return this.http.get<CustomResponse>(SERVER_URL + '/machine/template/' + templateId, HTTP_OPTIONS)
+    return this.http.get<CustomResponse>(SERVER_URL + '/machines/template/' + templateId, HTTP_OPTIONS)
   }
 
   isMachineWithUniqNumberExist(uniqNumber : string) : Observable<CustomResponse> {
-    return this.http.get<CustomResponse>(SERVER_URL + '/machine/exist/' + uniqNumber, HTTP_OPTIONS)
+    return this.http.get<CustomResponse>(SERVER_URL + '/machines/exist/' + uniqNumber, HTTP_OPTIONS)
   }
 
   getMachineById(machineId: string) : Observable<CustomResponse> {
-    return this.http.get<CustomResponse>(SERVER_URL + '/machine/' + machineId, HTTP_OPTIONS)
+    return this.http.get<CustomResponse>(SERVER_URL + '/machines/' + machineId, HTTP_OPTIONS)
+  }
+
+  getMyMachines() : Observable<CustomResponse> {
+    return this.http.get<CustomResponse>(SERVER_URL + '/machines/my', HTTP_OPTIONS)
+  }
+
+  addMachineWithNumber(uniqNumber: string) : Observable<CustomResponse> {
+    return this.http.post<CustomResponse>(SERVER_URL + '/machines/add', uniqNumber, HTTP_OPTIONS);
   }
 }

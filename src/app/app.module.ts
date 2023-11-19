@@ -21,6 +21,7 @@ import { CoffeeMachineNewComponent } from './components/coffee-machine-new/coffe
 import { CoffeeMachineAllComponent } from './components/coffee-machine-all/coffee-machine-all.component';
 import { CoffeeMachineDetailsComponent } from './components/coffee-machine-details/coffee-machine-details.component';
 import { ServiceTaskComponent } from './components/service-task/service-task.component';
+import { CoffeeMachinesMyComponent } from './components/coffee-machines-my/coffee-machines-my.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ServiceTaskComponent } from './components/service-task/service-task.com
     CoffeeMachineNewComponent,
     CoffeeMachineAllComponent,
     CoffeeMachineDetailsComponent,
-    ServiceTaskComponent
+    ServiceTaskComponent,
+    CoffeeMachinesMyComponent
   ],
   imports: [
     BrowserModule,

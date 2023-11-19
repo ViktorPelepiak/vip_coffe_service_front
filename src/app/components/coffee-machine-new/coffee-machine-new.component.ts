@@ -206,7 +206,7 @@ export class CoffeeMachineNewComponent {
       this.coffeeMachineService.saveTemplate(modelId, this.partTypesWithCharacteristics)
         .subscribe(response => {
           if (response.success) {
-            this.router.navigate(['/coffee_machine']);
+            this.router.navigate(['/coffee_machines']);
           }
         })
     } else {
@@ -223,7 +223,7 @@ export class CoffeeMachineNewComponent {
         this.coffeeMachineService.saveMachine(modelId, this.partTypesWithCharacteristics, uniqMachineNumber, warrantyEndDate, additionalInformation)
           .subscribe(response => {
             if (response.success) {
-              this.router.navigate(['/coffee_machine']);
+              this.router.navigate(['/coffee_machines']);
             }
           })
       })
