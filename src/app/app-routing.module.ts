@@ -16,6 +16,7 @@ import {CoffeeMachineNewComponent} from "./components/coffee-machine-new/coffee-
 import {CoffeeMachineAllComponent} from "./components/coffee-machine-all/coffee-machine-all.component";
 import {CoffeeMachineDetailsComponent} from "./components/coffee-machine-details/coffee-machine-details.component";
 import {ServiceTaskComponent} from "./components/service-task/service-task.component";
+import {CoffeeMachinesMyComponent} from "./components/coffee-machines-my/coffee-machines-my.component";
 
 const routes: Routes = [
   {path: "", component: HomeComponent},
@@ -26,12 +27,13 @@ const routes: Routes = [
   {path: "administration/models", component:AdministrationModelsComponent},
   {path: "administration/part_types", component:AdministrationPartTypesComponent},
   {path: "administration/characteristics", component:AdministrationCharacteristicTypesComponent},
-  {path: "coffee_machine/new", component: CoffeeMachineNewComponent},
-  {path: "coffee_machine/new/:templateId", component: CoffeeMachineNewComponent},
-  {path: "coffee_machine", component:CoffeeMachineAllComponent},
-  {path: "coffee_machine/:machineId", component: CoffeeMachineDetailsComponent},
-  {path: "coffee_machine/:machineId/task", component: ServiceTaskComponent},
-  {path: "coffee_machine/:machineId/task/:taskId", component: ServiceTaskComponent}
+  {path: "coffee_machines/new", component: CoffeeMachineNewComponent},
+  {path: "coffee_machines/new/:templateId", component: CoffeeMachineNewComponent},
+  {path: "coffee_machines", component:CoffeeMachineAllComponent},
+  {path: "coffee_machines/:machineId", component: CoffeeMachineDetailsComponent},
+  {path: "coffee_machines/:machineId/task", component: ServiceTaskComponent},
+  {path: "coffee_machines/:machineId/task/:taskId", component: ServiceTaskComponent},
+  {path: "my_machines", component: CoffeeMachinesMyComponent}
 ];
 
 @NgModule({

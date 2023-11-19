@@ -38,10 +38,10 @@ export class CoffeeMachineDetailsComponent {
   }
 
   showTaskDetails(taskId: number) {
-    this.router.navigate(['/coffee_machine/' + this.machine.id + '/task/' + taskId]);
+    this.router.navigate(['/coffee_machines/' + this.machine.id + '/task/' + taskId]);
   }
 
   addTask() {
-    this.router.navigate(['/coffee_machine/' + this.machine.id + '/task']);
+    this.router.navigate(['/coffee_machines/' + this.machine.id + '/task']);
   }
 }
